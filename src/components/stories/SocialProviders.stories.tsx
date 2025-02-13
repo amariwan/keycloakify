@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SocialProviders, SocialProvidersProps } from "../ui/SocialProviders"; // Adjust the path based on your directory structure
+import { SocialProviders, SocialProvidersProps } from "../ui/SocialProviders";
+
+type ClsxFn = (...args: string[]) => string;
 
 const meta: Meta<typeof SocialProviders> = {
     title: "Components/SocialProviders",
@@ -11,38 +13,34 @@ const meta: Meta<typeof SocialProviders> = {
                 {
                     loginUrl: "google",
                     alias: "google",
-
                     displayName: "Google",
-                    iconClasses: "fa fa-google"
+                    iconClasses: "fa fa-google",
                 },
                 {
                     loginUrl: "microsoft",
                     alias: "microsoft",
-
                     displayName: "Microsoft",
-                    iconClasses: "fa fa-windows"
-                }
-            ]
+                    iconClasses: "fa fa-windows",
+                },
+            ],
         },
         realm: {
-            password: true
+            password: true,
         },
-        msg: (key: string) => key, // Mocked msg function for labels
-        kcClsx: (...args: any[]) => args.join(" "), // Mock kcClsx function
-        clsx: (...args: any[]) => args.join(" ") // Mock clsx function
-    }
+        msg: (key: string) => key,
+        kcClsx: ((...args: string[]) => args.join(" ")) as ClsxFn,
+        clsx: ((...args: string[]) => args.join(" ")) as ClsxFn,
+    },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof SocialProviders>;
 
-// Default story with example providers
 export const Default: Story = {
-    render: (args: SocialProvidersProps) => <SocialProviders {...args} />
+    render: (args: SocialProvidersProps) => <SocialProviders {...args} />,
 };
 
-// Story with a single provider (e.g., Google)
 export const SingleProvider: Story = {
     args: {
         social: {
@@ -50,17 +48,15 @@ export const SingleProvider: Story = {
                 {
                     loginUrl: "google",
                     alias: "google",
-
                     displayName: "Google",
-                    iconClasses: "fa fa-google"
-                }
-            ]
-        }
+                    iconClasses: "fa fa-google",
+                },
+            ],
+        },
     },
-    render: (args: SocialProvidersProps) => <SocialProviders {...args} />
+    render: (args: SocialProvidersProps) => <SocialProviders {...args} />,
 };
 
-// Story with multiple providers
 export const MultipleProviders: Story = {
     args: {
         social: {
@@ -68,39 +64,35 @@ export const MultipleProviders: Story = {
                 {
                     loginUrl: "google",
                     alias: "google",
-
                     displayName: "Google",
-                    iconClasses: "fa fa-google"
+                    iconClasses: "fa fa-google",
                 },
                 {
                     loginUrl: "microsoft",
                     alias: "microsoft",
-
                     displayName: "Microsoft",
-                    iconClasses: "fa fa-windows"
+                    iconClasses: "fa fa-windows",
                 },
                 {
                     loginUrl: "twitter",
-                    alias: "microsoft",
-
+                    alias: "twitter",
                     displayName: "Twitter",
-                    iconClasses: "fa fa-twitter"
-                }
-            ]
-        }
+                    iconClasses: "fa fa-twitter",
+                },
+            ],
+        },
     },
-    render: (args: SocialProvidersProps) => <SocialProviders {...args} />
+    render: (args: SocialProvidersProps) => <SocialProviders {...args} />,
 };
 
-// Story with no providers (empty state)
 export const NoProviders: Story = {
     args: {
         social: {
-            providers: []
+            providers: [],
         },
         realm: {
-            password: true
-        }
+            password: true,
+        },
     },
-    render: (args: SocialProvidersProps) => <SocialProviders {...args} />
+    render: (args: SocialProvidersProps) => <SocialProviders {...args} />,
 };
