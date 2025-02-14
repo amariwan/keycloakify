@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     keycloakify({
-      accountThemeImplementation: "none",
+      accountThemeImplementation: "Single-Page",
       keycloakVersionTargets: {
         "all-other-versions": "reha-inside-theme.jar",
         "22-to-25": false
