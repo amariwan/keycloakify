@@ -70,7 +70,7 @@ export const WithSubmenu: StoryObj = {
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger inset>More Options</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>More Options</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuItem>Sub-option 1</DropdownMenuItem>
             <DropdownMenuItem>Sub-option 2</DropdownMenuItem>
