@@ -1,0 +1,18 @@
+/**
+ * WARNING: Before modifying this file, run the following command:
+ * 
+ * $ npx keycloakify own --path 'admin/authentication/components/flow-title.css'
+ * 
+ * This file is provided by @keycloakify/keycloak-admin-ui version 260007.0.4.
+ * It was copied into your repository by the postinstall script: `keycloakify sync-extensions`.
+ */
+
+.keycloak__authentication__title {
+  width: fit-content;
+  width: -moz-fit-content;
+}
+
+.keycloak__authentication__title .pf-v5-c-card__body {
+  padding-bottom: var(--pf-v5-global--spacer--sm);
+  padding-top: var(--pf-v5-global--spacer--sm);
+}

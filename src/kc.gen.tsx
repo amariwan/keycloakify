@@ -27,7 +27,8 @@ export const kcEnvDefaults: Record<KcEnvName, string> = {};
 export type KcContext =
   | import("./login/KcContext").KcContext
   | import("./account/KcContext").KcContext
-  | import("./admin/KcContext").KcContext;
+  | import("./admin/KcContext").KcContext
+  | import("./email/KcContext").KcContext;
 
 declare global {
   interface Window {
@@ -38,6 +39,7 @@ declare global {
 export const KcLoginPage = lazy(() => import("./login/KcPage"));
 export const KcAccountPage = lazy(() => import("./account/KcPage"));
 export const KcAdminPage = lazy(() => import("./admin/KcPage"));
+export const KcEmailPage = lazy(() => import("./email/KcPage"));
 
 export function KcPage(props: { kcContext: KcContext; fallback?: ReactNode }) {
   const { kcContext, fallback } = props;
@@ -51,6 +53,10 @@ export function KcPage(props: { kcContext: KcContext; fallback?: ReactNode }) {
             return <KcAccountPage kcContext={kcContext} />;
           case "admin":
             return <KcAdminPage kcContext={kcContext} />;
+          case "email":
+            return <KcEmailPage kcContext={kcContext} />;
+          default:
+            return <h1>Unknown theme type</h1>;
         }
       })()}
     </Suspense>
