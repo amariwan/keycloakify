@@ -4,3 +4,8 @@ node_modules/
 /public/keycloakify-dev-resources/
 /.vscode/
 /.yarn_home/
+/.yarnrc
+/.yarnrc.yml
+pnpm*.yaml
+.pnpm*
+package*.json
