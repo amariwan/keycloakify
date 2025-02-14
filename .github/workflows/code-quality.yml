@@ -8,30 +8,47 @@ on:
 
 jobs:
   code-quality:
-    name: Code Quality
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8.6.0
 
-      - name: Install dependencies
+      - name: Cache pnpm Store
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
         run: pnpm install
 
-      - name: Check code formatting
+      - name: Run Tests with Coverage
+        run: pnpm run test --if-present
+
+      - name: Run Security Audit
+        run: pnpm audit
+
+      - name: Check Code Formatting
         run: npx prettier --check .
 
-      - name: Check code linting
+      - name: Check Linting
         run: npx eslint . --max-warnings 0
 
-      - name: Check build
+      - name: Build Project
         run: pnpm run build
