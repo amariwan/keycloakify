@@ -8,38 +8,39 @@ on:
 
 jobs:
   code-quality:
+    name: Code Quality
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Verify pnpm installation
-        run: |
-          echo "PATH: $PATH"
-          which pnpm || echo "pnpm not found"
-          pnpm --version
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-      - name: Install pnpm globally as fallback
-        if: failure()
-        run: npm install -g pnpm
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.0
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Tests with Coverage
+      - name: Run unit tests
         run: pnpm run test --if-present
+
+      - name: Check code formatting
+        run: npx prettier --check .
+
+      - name: Check code linting
+        run: npx eslint . --max-warnings 0
+
+      - name: Check build
+        run: pnpm run build
 
       - name: Run Security Audit
         run: pnpm audit
-
-      - name: Check Code Formatting
-        run: npx prettier --check .
-
-      - name: Check Linting
-        run: npx eslint . --max-warnings 0
 
       - name: Build Project
         run: pnpm run build
