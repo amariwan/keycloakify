@@ -52,7 +52,8 @@
     "keycloak-js": "26.0.7",
     "@keycloakify/keycloak-ui-shared": "~260007.0.2",
     "@patternfly/react-styles": "^5.4.0",
-    "@keycloak/keycloak-admin-client": "26.0.7"
+    "@keycloak/keycloak-admin-client": "26.0.7",
+    "@keycloakify/email-native": "~260007.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",

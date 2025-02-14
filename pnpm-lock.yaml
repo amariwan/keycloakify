@@ -14,6 +14,9 @@ importers:
       '@keycloak/keycloak-admin-client':
         specifier: 26.0.7
         version: 26.0.7
+      '@keycloakify/email-native':
+        specifier: ~260007.0.0
+        version: 260007.0.0
       '@keycloakify/keycloak-account-ui':
         specifier: ~260007.0.3
         version: 260007.0.3(21d15cbf15270eb70126cd36702bcd4a)
@@ -754,6 +757,9 @@ packages:
   '@keycloak/keycloak-admin-client@26.0.7':
     resolution: {integrity: sha512-2vdx04sxnTQavnE7zuztyfmf1l5opG1Bi76hh3Wj02m6vR+aSiHFxlTXJFHVZtE9Emko+qgU7a5kEFC+Il+EwQ==}
     engines: {node: '>=18'}
+
+  '@keycloakify/email-native@260007.0.0':
+    resolution: {integrity: sha512-hFUiOwwpc84eXPAct44G/pTBkYnDQF1jIObME+ZUrb7XidmFJ/TdH9q49LKpd9sIivSyOEJa1qLtrggP+c+BJw==}
 
   '@keycloakify/keycloak-account-ui@260007.0.3':
     resolution: {integrity: sha512-MsTKlUUrgF0YRojz7IF1Y6AgI5lGbNOQoWY4kxOhlYPBaG3sovjnW8YatAJf2bBSCQgb1Y7OtSxmUJmgH1IX6Q==}
@@ -5476,6 +5482,8 @@ snapshots:
       camelize-ts: 3.0.0
       url-join: 5.0.0
       url-template: 3.1.1
+
+  '@keycloakify/email-native@260007.0.0': {}
 
   '@keycloakify/keycloak-account-ui@260007.0.3(21d15cbf15270eb70126cd36702bcd4a)':
     dependencies:
