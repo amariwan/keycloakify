@@ -1,10 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { keycloakify } from "keycloakify/vite-plugin";
+import { buildEmailTheme } from "keycloakify-emails";
+
 import * as path from "node:path";
 
 export default defineConfig({
   base: "/",
+  define: {
+    "process.env": {}
+  },
   plugins: [
     react(),
     keycloakify({
@@ -14,7 +19,18 @@ export default defineConfig({
         "22-to-25": false
       },
       themeName: "reha-inside-theme",
-      themeVersion: "1.0.0"
+      themeVersion: "1.0.0",
+      postBuild: async buildContext => {
+        await buildEmailTheme({
+          templatesSrcDirPath: import.meta.dirname + "/emails/page",
+          themeNames: buildContext.themeNames,
+          keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
+          locales: ["en", "de"],
+          i18nSourceFile: import.meta.dirname + "/emails/i18n.ts",
+          cwd: import.meta.dirname,
+          esbuild: {}
+        });
+      }
     })
   ],
   resolve: {

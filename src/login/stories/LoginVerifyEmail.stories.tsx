@@ -21,7 +21,7 @@ export const Default: Story = {
           type: "warning"
         },
         user: {
-          email: "john.doe@gmail.com"
+          email: "sss@gwq-serviceplus.de"
         }
       }}
     />
@@ -43,7 +43,7 @@ export const WithSuccessMessage: Story = {
           type: "success"
         },
         user: {
-          email: "john.doe@gmail.com"
+          email: "sss@gwq-serviceplus.de"
         },
         url: {
           loginAction: "/mock-login-action"
@@ -68,7 +68,7 @@ export const WithErrorMessage: Story = {
           type: "error"
         },
         user: {
-          email: "john.doe@gmail.com"
+          email: "sss@gwq-serviceplus.de"
         },
         url: {
           loginAction: "/mock-login-action"
@@ -93,7 +93,7 @@ export const WithInfoMessage: Story = {
           type: "info"
         },
         user: {
-          email: "john.doe@gmail.com"
+          email: "sss@gwq-serviceplus.de"
         },
         url: {
           loginAction: "/mock-login-action"

@@ -7,6 +7,14 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button.tsx";
+import {
+  Card,
+  CardHeader,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from "@/components/ui/card";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import { ChevronLeft } from "lucide-react";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
@@ -44,13 +52,14 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8 bg-gray-100 sm:py-24 ">
+    <div className="min-h-screen flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8  sm:py-24 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-md ">
-        <h2 className="text-center text-4xl font-extrabold text-gray-900 uppercase">
+        <h2 className="text-center text-4xl font-extrabold uppercase">
           <div>
             <img
-              src={`${import.meta.env.BASE_URL}RehaInsideWh.png`}
+              src={`${import.meta.env.BASE_URL}img/logo.png`}
               width={100}
+              alt={realm.displayNameHtml}
               onError={e => {
                 e.currentTarget.style.display = "none";
                 e.currentTarget.nextElementSibling?.removeAttribute("hidden");
@@ -60,7 +69,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
           </div>
         </h2>
         {enabledLanguages.length > 1 && (
-          <div className="fixed right-5 top-5">
+          <div className="flex fixed right-5 top-5">
+            <ModeToggle />
+
             <Select
               value={currentLanguage.languageTag}
               onValueChange={value => {
@@ -69,7 +80,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 window.location.href = selected.href;
               }}
             >
-              <SelectTrigger className="w-[180px] bg-white">
+              <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select a locale" />
               </SelectTrigger>
               <SelectContent>
@@ -84,6 +95,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             </Select>
           </div>
         )}
+
         <div className="fixed left-5 top-5">
           <Button
             variant="ghost"
@@ -97,14 +109,16 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         </div>
       </div>
 
-      <div className="mt-5 mx-0 sm:mx-auto w-full max-w-md shadow shadow-[-7px_13px_100px_-15px_rgba(234,_179,_8,_0.5)] sm:overflow-hidden ">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-6">
-          <h1 className="text-2xl font-normal text-gray-900 mb-6 text-center">{headerNode}</h1>
-          {displayRequiredFields && (
-            <div className="text-sm text-gray-500 mb-4">
-              <span className="text-red-500">*</span> {msg("requiredFields")}
-            </div>
-          )}
+      <Card className="mt-5 mx-0 sm:mx-auto w-full max-w-md ">
+        <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-6">
+          <CardHeader className="text-2xl font-normal  mb-6 text-center">{headerNode}</CardHeader>
+          <CardDescription>
+            {displayRequiredFields && (
+              <div className="text-sm  mb-4">
+                <span className="text-red-500">*</span> {msg("requiredFields")}
+              </div>
+            )}
+          </CardDescription>
           {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
             <div
               className={`mb-4 p-4 rounded-md ${message.type === "error" ? "bg-red-50 text-red-700" : message.type === "warning" ? "bg-yellow-50 text-yellow-700" : message.type === "info" ? "bg-blue-50 text-blue-700" : "bg-green-50 text-green-700"}`}
@@ -182,25 +196,29 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             </div>
           )}
           {children}
-          {auth !== undefined && auth.showTryAnotherWayLink && (
-            <form id="kc-select-try-another-way-form" action={url.loginAction} method="post" className="mt-4">
-              <input type="hidden" name="tryAnotherWay" value="on" />
-              <a
-                href="#"
-                id="try-another-way"
-                onClick={() => {
-                  document.forms["kc-select-try-another-way-form" as never].submit();
-                  return false;
-                }}
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                {msg("doTryAnotherWay")}
-              </a>
-            </form>
-          )}
-          {displayInfo && <div className="mt-6 text-center">{infoNode}</div>}
+          <CardContent>
+            {auth !== undefined && auth.showTryAnotherWayLink && (
+              <form id="kc-select-try-another-way-form" action={url.loginAction} method="post" className="mt-4">
+                <input type="hidden" name="tryAnotherWay" value="on" />
+                <a
+                  href="#"
+                  id="try-another-way"
+                  onClick={() => {
+                    document.forms["kc-select-try-another-way-form" as never].submit();
+                    return false;
+                  }}
+                  className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  {msg("doTryAnotherWay")}
+                </a>
+              </form>
+            )}
+          </CardContent>
+          <CardFooter>
+            {displayInfo && <div className="text-center">{infoNode}</div>}
+          </CardFooter>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

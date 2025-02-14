@@ -1,4 +1,4 @@
-import type { ExtendKcContext } from "keycloakify/login";
+import type { ExtendKcContext } from "keycloakify-emails";
 import type { KcEnvName, ThemeName } from "../kc.gen";
 
 export type KcContextExtension = {

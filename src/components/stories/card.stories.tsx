@@ -7,6 +7,7 @@ import {
   CardContent,
   CardFooter
 } from "../ui/card";
+import { Button } from "../ui/button";
 
 // Define metadata for the Card component
 const meta: Meta<typeof Card> = {
@@ -34,7 +35,7 @@ export const Default: StoryObj = {
         <p>This is the content of the card. You can add any component here.</p>
       </CardContent>
       <CardFooter>
-        <button className="bg-blue-500 text-white p-2 rounded">Action</button>
+        <Button className="text-white p-2 rounded">Action</Button>
       </CardFooter>
     </Card>
   )
@@ -54,7 +55,7 @@ export const CustomStyle: StoryObj = {
         <p>Card content with a custom style.</p>
       </CardContent>
       <CardFooter>
-        <button className="bg-red-500 text-white p-2 rounded">Custom Action</button>
+        <Button className="bg-red-500 text-white p-2 rounded">Custom Action</Button>
       </CardFooter>
     </Card>
   )
@@ -79,7 +80,7 @@ export const LongContent: StoryObj = {
         </p>
       </CardContent>
       <CardFooter>
-        <button className="bg-blue-500 text-white p-2 rounded">View More</button>
+        <Button className="bg-blue-500 text-white p-2 rounded">View More</Button>
       </CardFooter>
     </Card>
   )

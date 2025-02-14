@@ -1,20 +1,24 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
-const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: ["@chromatic-com/storybook"],
-
+export default {
   framework: {
     name: "@storybook/react-vite",
     options: {}
   },
-
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions"
+  ],
   staticDirs: ["../public"],
-
-  docs: {},
-
-  typescript: {
-    reactDocgen: "react-docgen-typescript"
+  features: {
+    storyStoreV7: true
+  },
+  docs: {
+    autodocs: true,
+    theme: {
+      base: "light"
+    }
   }
-};
-export default config;
+} as StorybookConfig;
