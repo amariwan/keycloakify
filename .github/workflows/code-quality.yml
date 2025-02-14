@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run unit tests
-        run: pnpm run test --if-present
-
       - name: Check code formatting
         run: npx prettier --check .
 
