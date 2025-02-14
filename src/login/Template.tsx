@@ -58,7 +58,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
             />
             {msg("loginTitleHtml", realm.displayNameHtml)}
           </div>
-
         </h2>
         {enabledLanguages.length > 1 && (
           <div className="fixed right-5 top-5">

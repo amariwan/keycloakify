@@ -37,7 +37,7 @@ export default typescriptEslint.config(
       "react-hooks/exhaustive-deps": "off",
       "@typescript-eslint/no-redeclare": "off",
       "no-labels": "off",
-       "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-explicit-any": "off"
     }
   },
   {

@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
+  CardFooter
 } from "../ui/card";
 
 // Define metadata for the Card component
@@ -15,9 +15,9 @@ const meta: Meta<typeof Card> = {
   tags: ["autodocs"],
   argTypes: {
     className: {
-      control: "text",
-    },
-  },
+      control: "text"
+    }
+  }
 };
 
 export default meta;
@@ -37,7 +37,7 @@ export const Default: StoryObj = {
         <button className="bg-blue-500 text-white p-2 rounded">Action</button>
       </CardFooter>
     </Card>
-  ),
+  )
 };
 
 // Define a CustomStyle story to showcase customized styles
@@ -57,7 +57,7 @@ export const CustomStyle: StoryObj = {
         <button className="bg-red-500 text-white p-2 rounded">Custom Action</button>
       </CardFooter>
     </Card>
-  ),
+  )
 };
 
 // Define a story for a card with long content
@@ -67,19 +67,20 @@ export const LongContent: StoryObj = {
       <CardHeader>
         <CardTitle>Card with Long Content</CardTitle>
         <CardDescription>
-          A description with more detailed content to demonstrate how it handles long text.
+          A description with more detailed content to demonstrate how it handles long
+          text.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <p>
-          This card contains a lot of content. It’s a good example of what happens
-          when content extends the usual length. The Card component is flexible enough
-          to handle varying amounts of text and other components.
+          This card contains a lot of content. It’s a good example of what happens when
+          content extends the usual length. The Card component is flexible enough to
+          handle varying amounts of text and other components.
         </p>
       </CardContent>
       <CardFooter>
         <button className="bg-blue-500 text-white p-2 rounded">View More</button>
       </CardFooter>
     </Card>
-  ),
+  )
 };

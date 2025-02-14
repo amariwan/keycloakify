@@ -2,9 +2,7 @@ import { createRoot } from "react-dom/client";
 import { StrictMode, lazy, Suspense } from "react";
 import { getKcContextMock } from "./login/KcPageStory";
 
-const KcPage = lazy(() =>
-  import("./kc.gen").then((mod) => ({ default: mod.KcPage }))
-);
+const KcPage = lazy(() => import("./kc.gen").then(mod => ({ default: mod.KcPage })));
 
 window.kcContext = getKcContextMock({
   pageId: "register.ftl",
