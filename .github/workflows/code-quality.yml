@@ -27,15 +27,17 @@ jobs:
         with:
           version: 8.6.0
 
-      - name: Cache pnpm Store
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - name: Verify pnpm installation
+        run: |
+          echo "PATH: $PATH"
+          which pnpm || echo "pnpm not found"
+          pnpm --version
 
-      - name: Install Dependencies
+      - name: Install pnpm globally as fallback
+        if: failure()
+        run: npm install -g pnpm
+
+      - name: Install dependencies
         run: pnpm install
 
       - name: Run Tests with Coverage
