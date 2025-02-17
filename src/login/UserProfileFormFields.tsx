@@ -1,4 +1,4 @@
-import { useEffect, useReducer, Fragment } from "react";
+import { useEffect,  Fragment } from "react";
 import { assert } from "keycloakify/tools/assert";
 import type { KcClsx } from "keycloakify/login/lib/kcClsx";
 import {
@@ -219,8 +219,7 @@ function FieldErrors(props: { attribute: Attribute; displayableErrors: FormField
     return (
         <span
             id={`input-error-${attribute.name}${fieldIndex === undefined ? "" : `-${fieldIndex}`}`}
-            // className={kcClsx("kcInputErrorMessageClass")}
-            className="text-danger text-md "
+            className={kcClsx("kcInputErrorMessageClass")}
             aria-live="polite"
         >
             {displayableErrors

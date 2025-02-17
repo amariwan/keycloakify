@@ -1,3 +1,4 @@
+declare module 'react-dom/client';
 import { createRoot } from "react-dom/client";
 import { StrictMode, lazy, Suspense } from "react";
 import { getKcContextMock } from "./login/KcPageStory";

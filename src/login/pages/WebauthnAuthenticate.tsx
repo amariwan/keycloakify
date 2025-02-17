@@ -117,9 +117,8 @@ export default function WebauthnAuthenticate(props: PageProps<Extract<KcContext,
             </>
           )}
           <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
-            <Input
+            <Button
               id={authButtonId}
-              type="button"
               autoFocus
               value={msgStr("webauthn-doAuthenticate")}
               className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
