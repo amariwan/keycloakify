@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { keycloakify } from "keycloakify/vite-plugin";
 import { buildEmailTheme } from "keycloakify-emails";
-
 import * as path from "node:path";
 
 export default defineConfig({
@@ -33,6 +32,15 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
+    }
+  },
+  define: {
+    "process.env": {},
+    "process.cwd": '() => "/"'
+  },
+  build: {
+    rollupOptions: {
+      external: ["fs", "path"]
     }
   }
 });
