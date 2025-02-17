@@ -178,9 +178,9 @@ export const WithRecaptchaFrench: Story = {
     <KcPageStory
       kcContext={{
         locale: {
-          currentLanguageTag: "fr"
+          currentLanguageTag: "de"
         },
-        scripts: ["https://www.google.com/recaptcha/api.js?hl=fr"],
+        scripts: ["https://www.google.com/recaptcha/api.js?hl=de"],
         recaptchaRequired: true,
         recaptchaSiteKey: "6LfQHvApAAAAAE73SYTd5vS0lB1Xr7zdiQ-6iBVa"
       }}

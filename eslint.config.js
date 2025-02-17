@@ -6,6 +6,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import globals from "globals";
 import js from "@eslint/js";
 import storybook from "eslint-plugin-storybook";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default typescriptEslint.config(
   js.configs.recommended,
@@ -20,7 +21,8 @@ export default typescriptEslint.config(
   {
     plugins: {
       "react-refresh": reactRefresh,
-      "react-hooks": reactHooks
+      "react-hooks": reactHooks,
+      "jsx-a11y": jsxA11y
     },
     languageOptions: {
       globals: {
@@ -37,7 +39,10 @@ export default typescriptEslint.config(
       "react-hooks/exhaustive-deps": "off",
       "@typescript-eslint/no-redeclare": "off",
       "no-labels": "off",
-      "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-explicit-any": "off",
+      "jsx-a11y/anchor-is-valid": "warn",
+      "jsx-a11y/alt-text": "warn",
+      "jsx-a11y/no-autofocus": "warn"
     }
   },
   {

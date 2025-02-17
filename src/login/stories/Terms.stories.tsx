@@ -31,7 +31,7 @@ export const French: Story = {
     <KcPageStory
       kcContext={{
         locale: {
-          currentLanguageTag: "fr"
+          currentLanguageTag: "de"
         },
         "x-keycloakify": {
           // cSpell: disable
@@ -50,7 +50,7 @@ export const Spanish: Story = {
     <KcPageStory
       kcContext={{
         locale: {
-          currentLanguageTag: "es"
+          currentLanguageTag: "de"
         },
         "x-keycloakify": {
           messages: {

@@ -9,7 +9,7 @@ const i18nMock = {
   msg: (key: string) => React.createElement("span", {}, key),
   advancedMsg: (key: string, ...args: (string | undefined)[]) =>
     React.createElement("span", {}, `${key} ${args.join(" ")}`),
-  currentLanguage: { languageTag: "en", label: "English" },
+  currentLanguage: { languageTag: "de", label: "Deutsch" },
   getChangeLocaleUrl: (languageTag: string) => `#${languageTag}`,
   advancedMsgStr: (key: string, ...args: (string | undefined)[]) =>
     `${key} ${args.join(" ")}`,

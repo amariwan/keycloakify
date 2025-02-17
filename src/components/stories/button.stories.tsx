@@ -38,6 +38,19 @@ type Story = StoryObj<ButtonProps>;
 // Default button story
 export const Default: Story = {};
 
+// submit button story
+export const Submit: Story = {
+  args: {
+    type: "submit"
+  }
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true
+  }
+};
+
 // Destructive button story
 export const Destructive: Story = {
   args: {

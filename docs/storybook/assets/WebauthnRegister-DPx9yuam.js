@@ -1,0 +1,24 @@
+import{j as t}from"./jsx-runtime-Cf8x2fCZ.js";import{g as k}from"./kcClsx-rKeGTTrF.js";import{r as O}from"./index-BlmOqGMO.js";import{u as N}from"./KcPageStory-DBRHJgZy.js";import{a as f}from"./assert-lEPzpKR_.js";import{w as S}from"./waitForElementMountedOnDom-qpCjLZnq.js";import"./index-yBjzXJbu.js";import"./iframe-DUdFcd_d.js";import"./index-49N86NKK.js";import"./index-IE9ObSwG.js";import"./index-BdQq_4o_.js";import"./index-Cnu3ZVWt.js";import"./index-Dv8KEsPl.js";import"./dropdown-menu-C7cUncHS.js";import"./index-_wjppGB2.js";import"./index-bzJWmFph.js";import"./index-xprPBo3d.js";import"./utils-CytzSlOG.js";import"./index-DZ2oWOeb.js";import"./button-BgOuTgla.js";import"./index-BwobEAja.js";import"./card-Cusb1SoT.js";import"./mode-toggle-uDeI8jqW.js";f();f();function B(r){const{authButtonId:e,kcContext:i,i18n:n}=r,{url:l,challenge:o,userid:s,username:a,signatureAlgorithms:m,rpEntityName:d,rpId:c,attestationConveyancePreference:p,authenticatorAttachment:u,requireResidentKey:y,userVerificationRequirement:b,createTimeout:x,excludeCredentialIds:j}=i,{msgStr:g,isFetchingTranslations:h}=n,{insertScriptTags:C}=N({componentOrHookName:"LoginRecoveryAuthnCodeConfig",scriptTags:[{type:"module",textContent:()=>`
+                    import { registerByWebAuthn } from "${l.resourcesPath}/js/webauthnRegister.js";
+                    const registerButton = document.getElementById('${e}');
+                    registerButton.addEventListener("click", function() {
+                        const input = {
+                            challenge : '${o}',
+                            userid : '${s}',
+                            username : '${a}',
+                            signatureAlgorithms : ${JSON.stringify(m)},
+                            rpEntityName : ${JSON.stringify(d)},
+                            rpId : ${JSON.stringify(c)},
+                            attestationConveyancePreference : ${JSON.stringify(p)},
+                            authenticatorAttachment : ${JSON.stringify(u)},
+                            requireResidentKey : ${JSON.stringify(y)},
+                            userVerificationRequirement : ${JSON.stringify(b)},
+                            createTimeout : ${x},
+                            excludeCredentialIds : ${JSON.stringify(j)},
+                            initLabel : ${JSON.stringify(g("webauthn-registration-init-label"))},
+                            initLabelPrompt : ${JSON.stringify(g("webauthn-registration-init-label-prompt"))},
+                            errmsg : ${JSON.stringify(g("webauthn-unsupported-browser-text"))}
+                        };
+                        registerByWebAuthn(input);
+                    });
+                `}]});O.useEffect(()=>{h||(async()=>(await S({elementId:e}),C()))()},[h])}function Y(r){const{kcContext:e,i18n:i,doUseDefaultCss:n,Template:l,classes:o}=r,{kcClsx:s}=k({doUseDefaultCss:n,classes:o}),{url:a,isSetRetry:m,isAppInitiatedAction:d}=e,{msg:c,msgStr:p}=i,u="authenticateWebAuthnButton";return B({authButtonId:u,kcContext:e,i18n:i}),t.jsxs(l,Object.assign({kcContext:e,i18n:i,doUseDefaultCss:n,classes:o,headerNode:t.jsxs(t.Fragment,{children:[t.jsx("span",{className:s("kcWebAuthnKeyIcon")}),c("webauthn-registration-title")]})},{children:[t.jsx("form",Object.assign({id:"register",className:s("kcFormClass"),action:a.loginAction,method:"post"},{children:t.jsxs("div",Object.assign({className:s("kcFormGroupClass")},{children:[t.jsx("input",{type:"hidden",id:"clientDataJSON",name:"clientDataJSON"}),t.jsx("input",{type:"hidden",id:"attestationObject",name:"attestationObject"}),t.jsx("input",{type:"hidden",id:"publicKeyCredentialId",name:"publicKeyCredentialId"}),t.jsx("input",{type:"hidden",id:"authenticatorLabel",name:"authenticatorLabel"}),t.jsx("input",{type:"hidden",id:"transports",name:"transports"}),t.jsx("input",{type:"hidden",id:"error",name:"error"}),t.jsx($,{kcClsx:s,i18n:i})]}))})),t.jsx("input",{type:"submit",className:s("kcButtonClass","kcButtonPrimaryClass","kcButtonBlockClass","kcButtonLargeClass"),id:u,value:p("doRegisterSecurityKey")}),!m&&d&&t.jsx("form",Object.assign({action:a.loginAction,className:s("kcFormClass"),id:"kc-webauthn-settings-form",method:"post"},{children:t.jsx("button",Object.assign({type:"submit",className:s("kcButtonClass","kcButtonDefaultClass","kcButtonBlockClass","kcButtonLargeClass"),id:"cancelWebAuthnAIA",name:"cancel-aia",value:"true"},{children:c("doCancel")}))}))]}))}function $(r){const{kcClsx:e,i18n:i}=r,{msg:n}=i;return t.jsx("div",Object.assign({id:"kc-form-options",className:e("kcFormOptionsClass")},{children:t.jsx("div",Object.assign({className:e("kcFormOptionsWrapperClass")},{children:t.jsx("div",Object.assign({className:"checkbox"},{children:t.jsxs("label",{children:[t.jsx("input",{type:"checkbox",id:"logout-sessions",name:"logout-sessions",value:"on",defaultChecked:!0}),n("logoutOtherSessions")]})}))}))}))}export{Y as default};

@@ -6,7 +6,7 @@ import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Button } from "@/components/ui/button.tsx";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -111,7 +111,15 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
       <Card className="mt-5 mx-0 sm:mx-auto w-full max-w-md ">
         <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-6">
-          <CardHeader className="text-2xl font-normal  mb-6 text-center">{headerNode}</CardHeader>
+          <CardHeader >
+            <h1
+              className={
+                "text-center text-[var(--tw-prose-headings)] font-extrabold text-[2.25em] mt-0 mb-[0.8888889em] leading-[1.1111111] tracking-tight"
+              }
+            >
+              {headerNode}
+            </h1>
+          </CardHeader>
           <CardDescription>
             {displayRequiredFields && (
               <div className="text-sm  mb-4">

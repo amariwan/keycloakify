@@ -2,6 +2,8 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function SelectAuthenticator(props: PageProps<Extract<KcContext, { pageId: "select-authenticator.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -22,7 +24,7 @@ export default function SelectAuthenticator(props: PageProps<Extract<KcContext, 
       <form id="kc-select-credential-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
         <div className={kcClsx("kcSelectAuthListClass")}>
           {auth.authenticationSelections.map((authenticationSelection, i) => (
-            <button
+            <Button
               key={i}
               className={kcClsx("kcSelectAuthListItemClass")}
               type="submit"
@@ -40,7 +42,7 @@ export default function SelectAuthenticator(props: PageProps<Extract<KcContext, 
               <div className={kcClsx("kcSelectAuthListItemArrowClass")}>
                 <i className={kcClsx("kcSelectAuthListItemArrowIconClass")} />
               </div>
-            </button>
+            </Button>
           ))}
         </div>
       </form>

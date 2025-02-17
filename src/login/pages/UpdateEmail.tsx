@@ -6,6 +6,8 @@ import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFo
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 type UpdateEmailProps = PageProps<Extract<KcContext, { pageId: "update-email.ftl" }>, I18n> & {
   UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
@@ -53,16 +55,16 @@ export default function UpdateEmail(props: UpdateEmailProps) {
           <LogoutOtherSessions kcClsx={kcClsx} i18n={i18n} />
 
           <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
-            <input
+            <Input
               disabled={!isFormSubmittable}
               className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", isAppInitiatedAction && "kcButtonBlockClass", "kcButtonLargeClass")}
               type="submit"
               value={msgStr("doSubmit")}
             />
             {isAppInitiatedAction && (
-              <button className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")} type="submit" name="cancel-aia" value="true">
+              <Button className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")} type="submit" name="cancel-aia" value="true">
                 {msg("doCancel")}
-              </button>
+              </Button>
             )}
           </div>
         </div>
@@ -81,7 +83,7 @@ function LogoutOtherSessions(props: { kcClsx: KcClsx; i18n: I18n }) {
       <div className={kcClsx("kcFormOptionsWrapperClass")}>
         <div className="checkbox">
           <label>
-            <input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
+            <Input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
             {msg("logoutOtherSessions")}
           </label>
         </div>

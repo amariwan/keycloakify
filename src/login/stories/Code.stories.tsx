@@ -27,12 +27,12 @@ export const WithErrorCode: Story = {
     />
   )
 };
-export const WithFrenchLanguage: Story = {
+export const WithEnglishLanguage: Story = {
   render: () => (
     <KcPageStory
       kcContext={{
         locale: {
-          currentLanguageTag: "fr"
+          currentLanguageTag: "en"
         },
         code: {
           success: true,

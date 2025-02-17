@@ -7,9 +7,6 @@ import * as path from "node:path";
 
 export default defineConfig({
   base: "/",
-  define: {
-    "process.env": {}
-  },
   plugins: [
     react(),
     keycloakify({

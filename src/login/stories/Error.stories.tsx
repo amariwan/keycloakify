@@ -37,11 +37,11 @@ export const WithHtmlErrorMessage: Story = {
     />
   )
 };
-export const FrenchError: Story = {
+export const DeutschError: Story = {
   render: () => (
     <KcPageStory
       kcContext={{
-        locale: { currentLanguageTag: "fr" },
+        locale: { currentLanguageTag: "de" },
         message: { summary: "Une erreur s'est produite" }
       }}
     />

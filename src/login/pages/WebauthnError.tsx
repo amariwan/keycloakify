@@ -2,6 +2,8 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function WebauthnError(props: PageProps<Extract<KcContext, { pageId: "webauthn-error.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -25,10 +27,10 @@ export default function WebauthnError(props: PageProps<Extract<KcContext, { page
       headerNode={msg("webauthn-error-title")}
     >
       <form id="kc-error-credential-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
-        <input type="hidden" id="executionValue" name="authenticationExecution" />
-        <input type="hidden" id="isSetRetry" name="isSetRetry" />
+        <Input type="hidden" id="executionValue" name="authenticationExecution" />
+        <Input type="hidden" id="isSetRetry" name="isSetRetry" />
       </form>
-      <input
+      <Input
         tabIndex={4}
         onClick={() => {
           // @ts-expect-error: Trusted Keycloak's code
@@ -46,7 +48,7 @@ export default function WebauthnError(props: PageProps<Extract<KcContext, { page
       />
       {isAppInitiatedAction && (
         <form action={url.loginAction} className={kcClsx("kcFormClass")} id="kc-webauthn-settings-form" method="post">
-          <button
+          <Button
             type="submit"
             className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonBlockClass", "kcButtonLargeClass")}
             id="cancelWebAuthnAIA"
@@ -54,7 +56,7 @@ export default function WebauthnError(props: PageProps<Extract<KcContext, { page
             value="true"
           >
             {msgStr("doCancel")}
-          </button>
+          </Button>
         </form>
       )}
     </Template>
