@@ -33,14 +33,5 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src")
     }
-  },
-  define: {
-    "process.env": {},
-    "process.cwd": '() => "/"'
-  },
-  build: {
-    rollupOptions: {
-      external: ["fs", "path"]
-    }
   }
 });
