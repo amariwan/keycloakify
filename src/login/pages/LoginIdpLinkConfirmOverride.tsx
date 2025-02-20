@@ -2,11 +2,12 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
 
 export default function LoginIdpLinkConfirmOverride(props: PageProps<Extract<KcContext, { pageId: "login-idp-link-confirm-override.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
-  const { kcClsx } = getKcClsx({
+  getKcClsx({
     doUseDefaultCss,
     classes
   });
@@ -24,15 +25,9 @@ export default function LoginIdpLinkConfirmOverride(props: PageProps<Extract<KcC
         </a>
         <br />
         <br />
-        <button
-          type="submit"
-          className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-          name="submitAction"
-          id="confirmOverride"
-          value="confirmOverride"
-        >
+        <Button type="submit" className={"w-full"} name="submitAction" id="confirmOverride" value="confirmOverride">
           {msg("confirmOverrideIdpContinue", idpDisplayName)}
-        </button>
+        </Button>
       </form>
     </Template>
   );

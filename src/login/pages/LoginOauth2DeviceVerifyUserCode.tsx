@@ -2,6 +2,8 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import { PageProps } from "keycloakify/login/pages/PageProps";
 import { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function LoginOauth2DeviceVerifyUserCode(
   props: PageProps<Extract<KcContext, { pageId: "login-oauth2-device-verify-user-code.ftl" }>, I18n>
@@ -27,7 +29,7 @@ export default function LoginOauth2DeviceVerifyUserCode(
           </div>
 
           <div className={kcClsx("kcInputWrapperClass")}>
-            <input id="device-user-code" name="device_user_code" autoComplete="off" type="text" className={kcClsx("kcInputClass")} autoFocus />
+            <Input id="device-user-code" name="device_user_code" autoComplete="off" type="text" className={kcClsx("kcInputClass")} autoFocus />
           </div>
         </div>
 
@@ -38,7 +40,9 @@ export default function LoginOauth2DeviceVerifyUserCode(
 
           <div id="kc-form-buttons" className={kcClsx("kcFormButtonsClass")}>
             <div className={kcClsx("kcFormButtonsWrapperClass")}>
-              <input className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")} type="submit" value={msgStr("doSubmit")} />
+              <Button className={"w-full"} type="submit" value={msgStr("doSubmit")}>
+                {msgStr("doSubmit")}
+              </Button>
             </div>
           </div>
         </div>

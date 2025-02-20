@@ -1,7 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.html",
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./node_modules/keycloakify/**/*.js",
+    "./node_modules/keycloakify/**/*.jsx",
+    "./.storybook/**/*.{js,jsx,ts,tsx}"
+  ],
+  safelist: ["font-semibold", "text-lg"],
   theme: {
     extend: {
       borderRadius: {
@@ -54,5 +63,5 @@ export default {
     }
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
-  plugins: [require("tailwindcss-animate")]
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")]
 };

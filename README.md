@@ -1,8 +1,5 @@
 # Shadcn Keycloak Theme
 
-[![Code Quality](https://github.com/ThilinaTLM/keycloakify-shadcn/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ThilinaTLM/keycloakify-shadcn/actions/workflows/code-quality.yml)
-[![Release](https://github.com/ThilinaTLM/keycloakify-shadcn/actions/workflows/release.yml/badge.svg)](https://github.com/ThilinaTLM/keycloakify-shadcn/actions/workflows/release.yml)
-
 A modern and customizable Keycloak theme built with [Keycloakify](https://www.keycloakify.dev/) and [shadcn/ui](https://ui.shadcn.com/). This theme provides a beautiful, responsive, and accessible user interface for Keycloak login pages.
 
 ## Features
@@ -102,11 +99,3 @@ Default admin credentials:
 1. Create a new page component in `/src/login/pages/`
 2. Add the page to the switch statement in `KcPage.tsx`
 3. Create a corresponding story file for Storybook testing
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

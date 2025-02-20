@@ -5,6 +5,7 @@ import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import Template from "./Template";
 import { pages } from "./pages";
+import "@/styles/index.css";
 
 const UserProfileFormFields = lazy(() => import("./UserProfileFormFields"));
 
@@ -29,4 +30,6 @@ export default function KcPage({ kcContext }: { kcContext: KcContext }) {
   );
 }
 
-const classes = {} satisfies { [key in ClassKey]?: string };
+const classes = {
+  kcHtmlClass: "bg-background"
+} satisfies { [key in ClassKey]?: string };

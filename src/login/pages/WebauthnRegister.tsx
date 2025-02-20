@@ -1,11 +1,13 @@
+import { assert } from "keycloakify/tools/assert";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import { useScript } from "keycloakify/login/pages/WebauthnRegister.useScript";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox"
+import { CheckboxWithLabel } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
 
 export default function WebauthnRegister(props: PageProps<Extract<KcContext, { pageId: "webauthn-register.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -32,7 +34,7 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
       classes={classes}
       headerNode={
         <>
-          <span className={kcClsx("kcWebAuthnKeyIcon")} />
+          <span className={kcClsx("kcWebAuthnKeyIcon") + " px-5"} />
           {msg("webauthn-registration-title")}
         </>
       }
@@ -48,31 +50,36 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
           <LogoutOtherSessions kcClsx={kcClsx} i18n={i18n} />
         </div>
       </form>
-      <div>
-
+      <div className="responsive-container">
         <Button
           type="submit"
-          className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-          id={authButtonId}
-
+          className={cn(buttonVariants({}), "w-full")}
+          id="registerWebAuthn"
+          value={msgStr("doRegisterSecurityKey")}
+          onClick={() => {
+            assert("registerSecurityKey" in window);
+            assert(typeof window.registerSecurityKey === "function");
+            window.registerSecurityKey();
+          }}
         >
           {msgStr("doRegisterSecurityKey")}
         </Button>
-      </div>
 
-      {!isSetRetry && isAppInitiatedAction && (
-        <form action={url.loginAction} className={kcClsx("kcFormClass")} id="kc-webauthn-settings-form" method="post">
-          <Button
-            type="submit"
-            className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonBlockClass", "kcButtonLargeClass")}
-            id="cancelWebAuthnAIA"
-            name="cancel-aia"
-            value="true"
-          >
-            {msg("doCancel")}
-          </Button>
-        </form>
-      )}
+        {!isSetRetry && isAppInitiatedAction && (
+          <form action={url.loginAction} className="all-unset w-full !p-0 " id="kc-webauthn-settings-form" method="post">
+            <Button
+              type="submit"
+              variant="outline"
+              className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonBlockClass", "kcButtonLargeClass") + " w-full"}
+              id="cancelWebAuthnAIA"
+              name="cancel-aia"
+              value="true"
+            >
+              {msg("doCancel")}
+            </Button>
+          </form>
+        )}
+      </div>
     </Template>
   );
 }
@@ -83,14 +90,9 @@ function LogoutOtherSessions(props: { kcClsx: KcClsx; i18n: I18n }) {
   const { msg } = i18n;
 
   return (
-    <div id="kc-form-options" className={kcClsx("kcFormOptionsClass")}>
-      <div className={kcClsx("kcFormOptionsWrapperClass")}>
-        <div className="checkbox">
-          <label>
-            <Checkbox id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
-            {msg("logoutOtherSessions")}
-          </label>
-        </div>
+    <div id="kc-form-options" className={kcClsx("kcFormOptionsClass") + " space-y-4"}>
+      <div className={kcClsx("kcFormOptionsWrapperClass") + " flex items-center space-x-2"}>
+        <CheckboxWithLabel id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} label={msg("logoutOtherSessions")} />
       </div>
     </div>
   );

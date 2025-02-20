@@ -2,6 +2,7 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import { PageProps } from "keycloakify/login/pages/PageProps";
 import { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
 
 export default function LoginOauthGrant(props: PageProps<Extract<KcContext, { pageId: "login-oauth-grant.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, classes, Template } = props;
@@ -76,21 +77,13 @@ export default function LoginOauthGrant(props: PageProps<Extract<KcContext, { pa
             </div>
 
             <div id="kc-form-buttons">
-              <div className={kcClsx("kcFormButtonsWrapperClass")}>
-                <input
-                  className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")}
-                  name="accept"
-                  id="kc-login"
-                  type="submit"
-                  value={msgStr("doYes")}
-                />
-                <input
-                  className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")}
-                  name="cancel"
-                  id="kc-cancel"
-                  type="submit"
-                  value={msgStr("doNo")}
-                />
+              <div className={kcClsx("kcFormButtonsWrapperClass") + " responsive-container"}>
+                <Button className={"w-full"} name="accept" id="kc-login" type="submit" value={msgStr("doYes")}>
+                  {msgStr("doYes")}
+                </Button>
+                <Button className={"w-full"} variant="outline" name="cancel" id="kc-cancel" type="submit" value={msgStr("doNo")}>
+                  {msgStr("doNo")}
+                </Button>
               </div>
             </div>
           </div>

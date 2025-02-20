@@ -4,6 +4,7 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CircleX } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Error(props: PageProps<Extract<KcContext, { pageId: "error.ftl" }>, I18n>) {
   const { kcContext, i18n, Template } = props;
@@ -24,9 +25,17 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
           </Alert>
           {!skipLink && client?.baseUrl && (
             <div className="mt-6 text-center">
-              <a id="backToApplication" href={client.baseUrl} className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+              <Button
+                id="backToApplication"
+                className="w-full"
+                onClick={() => {
+                  if (client?.baseUrl) {
+                    window.location.href = client.baseUrl;
+                  }
+                }}
+              >
                 {msg("backToApplication")}
-              </a>
+              </Button>
             </div>
           )}
         </div>

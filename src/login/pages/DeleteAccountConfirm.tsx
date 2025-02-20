@@ -2,11 +2,13 @@ import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button, FormSubmitButton } from "@/components/ui/button";
+import { Alert } from "@/components/ui/alert";
 
 export default function DeleteAccountConfirm(props: PageProps<Extract<KcContext, { pageId: "delete-account-confirm.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
-  const { kcClsx } = getKcClsx({
+  getKcClsx({
     doUseDefaultCss,
     classes
   });
@@ -18,34 +20,24 @@ export default function DeleteAccountConfirm(props: PageProps<Extract<KcContext,
   return (
     <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("deleteAccountConfirm")}>
       <form action={url.loginAction} className="form-vertical" method="post">
-        <div className="alert alert-warning" style={{ marginTop: "0", marginBottom: "30px" }}>
+        <Alert className="alert alert-warning" style={{ marginTop: "0", marginBottom: "30px" }}>
           <span className="pficon pficon-warning-triangle-o"></span>
           {msg("irreversibleAction")}
-        </div>
+        </Alert>
         <p>{msg("deletingImplies")}</p>
-        <ul
-          style={{
-            color: "#72767b",
-            listStyle: "disc",
-            listStylePosition: "inside"
-          }}
-        >
+        <ul>
           <li>{msg("loggingOutImmediately")}</li>
           <li>{msg("errasingData")}</li>
         </ul>
         <p className="delete-account-text">{msg("finalDeletionConfirmation")}</p>
-        <div id="kc-form-buttons">
-          <input className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")} type="submit" value={msgStr("doConfirmDelete")} />
+        <div id="kc-form-buttons" className="responsive-container">
+          <FormSubmitButton className={"w-full"} type="submit" value={msgStr("doConfirmDelete")}>
+            {msgStr("doConfirmDelete")}
+          </FormSubmitButton>
           {triggered_from_aia && (
-            <button
-              className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass")}
-              style={{ marginLeft: "calc(100% - 220px)" }}
-              type="submit"
-              name="cancel-aia"
-              value="true"
-            >
-              {msgStr("doCancel")}
-            </button>
+            <Button className="w-full" type="submit" name="cancel-aia" value="true" variant={"secondary"} size={"default"}>
+              {msg("doCancel")}
+            </Button>
           )}
         </div>
       </form>

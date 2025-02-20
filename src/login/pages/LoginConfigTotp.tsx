@@ -3,6 +3,9 @@ import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CheckboxWithLabel } from "@/components/ui/checkbox";
 
 export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pageId: "login-config-totp.ftl" }>, I18n>) {
   const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -101,7 +104,7 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
               <span className="required">*</span>
             </div>
             <div className={kcClsx("kcInputWrapperClass")}>
-              <input
+              <Input
                 type="text"
                 id="totp"
                 name="totp"
@@ -121,8 +124,8 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
                 />
               )}
             </div>
-            <input type="hidden" id="totpSecret" name="totpSecret" value={totp.totpSecret} />
-            {mode && <input type="hidden" id="mode" value={mode} />}
+            <Input type="hidden" id="totpSecret" name="totpSecret" value={totp.totpSecret} />
+            {mode && <Input type="hidden" id="mode" value={mode} />}
           </div>
 
           <div className={kcClsx("kcFormGroupClass")}>
@@ -133,7 +136,7 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
               {totp.otpCredentials.length >= 1 && <span className="required">*</span>}
             </div>
             <div className={kcClsx("kcInputWrapperClass")}>
-              <input
+              <Input
                 type="text"
                 id="userLabel"
                 name="userLabel"
@@ -160,29 +163,18 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
 
           {isAppInitiatedAction ? (
             <>
-              <input
-                type="submit"
-                className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")}
-                id="saveTOTPBtn"
-                value={msgStr("doSubmit")}
-              />
-              <button
-                type="submit"
-                className={kcClsx("kcButtonClass", "kcButtonDefaultClass", "kcButtonLargeClass", "kcButtonLargeClass")}
-                id="cancelTOTPBtn"
-                name="cancel-aia"
-                value="true"
-              >
+              <Button type="submit" className={"w-full"} id="saveTOTPBtn" value={msgStr("doSubmit")}>
+                {msgStr("doSubmit")}
+              </Button>
+
+              <Button type="submit" className={"w-full"} id="cancelTOTPBtn" name="cancel-aia" value="true">
                 {msg("doCancel")}
-              </button>
+              </Button>
             </>
           ) : (
-            <input
-              type="submit"
-              className={kcClsx("kcButtonClass", "kcButtonPrimaryClass", "kcButtonLargeClass")}
-              id="saveTOTPBtn"
-              value={msgStr("doSubmit")}
-            />
+            <Button type="submit" className={"w-full"} id="saveTOTPBtn" value={msgStr("doSubmit")}>
+              {msgStr("doSubmit")}
+            </Button>
           )}
         </form>
       </>
@@ -198,12 +190,7 @@ function LogoutOtherSessions(props: { kcClsx: KcClsx; i18n: I18n }) {
   return (
     <div id="kc-form-options" className={kcClsx("kcFormOptionsClass")}>
       <div className={kcClsx("kcFormOptionsWrapperClass")}>
-        <div className="checkbox">
-          <label>
-            <input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} />
-            {msg("logoutOtherSessions")}
-          </label>
-        </div>
+        <CheckboxWithLabel id="logout-sessions" name="logout-sessions" value="on" defaultChecked={true} label={msg("logoutOtherSessions")} />
       </div>
     </div>
   );
