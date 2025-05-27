@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  theme-builder:
+    image: node:24-slim
+    container_name: theme-builder
+    working_dir: /app
+    volumes:
+      - .:/app
+      - theme-output:/build
+    environment:
+      THEME_NAME: ${THEME_NAME}
+    command: >
+      sh -c "
+      apt-get update &&
+      apt-get install -y openjdk-17-jdk maven git &&
+      npm install -g pnpm &&
+      pnpm install &&
+      pnpm build-keycloak-theme &&
+      cp dist_keycloak/${THEME_NAME}.jar /build/${THEME_NAME}.jar
+      "
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:${KC_VERSION:-latest}
+    container_name: keycloak
+    depends_on:
+      - theme-builder
+    ports:
+      - "${KC_PORT:-8087}:8080"
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD}
+    volumes:
+      - theme-output:/opt/keycloak/providers
+    entrypoint: [ "bash", "-c", "chown -R keycloak:keycloak /opt/keycloak/providers && exec /opt/keycloak/bin/kc.sh start-dev" ]
+
+
+volumes:
+  theme-output:
